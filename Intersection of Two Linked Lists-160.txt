@@ -1,0 +1,46 @@
+Intersection of Two Linked Lists-160
+------------------------------------
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode temp1=headA;
+        ListNode temp2=headB;
+        int len_A=0;
+        int len_B=0;
+
+        while(temp1!=null)
+        {
+            len_A++;
+            temp1=temp1.next;
+        }
+
+        while(temp2!=null)
+        {
+            len_B++;
+            temp2=temp2.next;
+        }
+       temp1=headA;
+       temp2=headB;
+            int Diff=Math.abs(len_A-len_B);
+            if(len_A>len_B)
+            {
+                while(Diff>0){
+                    temp1=temp1.next;
+                    Diff--;
+                }
+            }
+            else{
+                while(Diff>0)
+                {
+                    temp2=temp2.next;
+                    Diff--;
+                }
+            }
+
+        while(temp1!=temp2)
+        {
+            temp1=temp1.next;
+            temp2=temp2.next;
+        }
+
+        return temp1;
