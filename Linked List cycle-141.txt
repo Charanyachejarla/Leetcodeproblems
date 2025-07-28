@@ -1,0 +1,19 @@
+Linked List cycle-141
+------------------------------
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode Slow=head;
+        ListNode Fast=head;
+        while(Fast!=null && Fast.next!=null)
+        {
+            Slow =Slow.next;
+            Fast=Fast.next.next;
+            if(Slow==Fast)
+            {
+                return true;
+            }
+            
+        }return false;
+        
+    }
+}

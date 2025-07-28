@@ -1,0 +1,37 @@
+Palindrome linked list-234
+--------------------------
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+          
+        ListNode slow=head;
+        ListNode fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        ListNode second_half=Reverse(slow);
+        ListNode first_half=head;
+        while(second_half!=null){
+            if(first_half.val!=second_half.val){
+                return false;
+            }
+            first_half=first_half.next;
+            second_half=second_half.next;
+        }
+
+       return true; 
+    }
+    ListNode Reverse(ListNode slow){
+        ListNode prev=null;
+        ListNode temp=slow;
+        while(temp!=null){
+        ListNode next=temp.next;
+        temp.next=prev;
+        prev=temp;
+        temp=next;
+        }
+        slow=prev;
+        return  prev;
+
+    }
+    }
