@@ -1,0 +1,54 @@
+Baseball Game-682
+
+
+class Solution {
+    public int calPoints(String[] operations) {
+        Stack<Integer> stack=new Stack<>();
+        
+        int total=0;
+        for(int i=0;i<operations.length;i++)
+        {
+            String ch=operations[i];
+           
+            if(ch.equals("C") && !stack.isEmpty())
+            {
+                stack.pop();
+            }
+             else if(ch.equals("D")&& !stack.isEmpty())
+            {
+                stack.push(stack.peek()*2);
+            }
+            else if(ch.equals("+"))
+            {
+                int sum=0;
+                int a=0;
+                int b=0;
+                if(!stack.isEmpty())
+                {
+                    b=stack.peek();
+                    sum+=stack.pop();
+                }
+                 if(!stack.isEmpty())
+                {
+                    a=stack.peek();
+                    sum+=stack.pop();
+                }
+                
+                stack.push(a);
+                stack.push(b);
+                stack.push(sum);
+            }
+            else{
+                int a=Integer.parseInt(ch);
+                stack.push(a);
+            }
+        }
+            while(!stack.isEmpty())
+            {
+                   total+=stack.pop();
+          
+            } 
+            return total;
+        
+    }
+}
