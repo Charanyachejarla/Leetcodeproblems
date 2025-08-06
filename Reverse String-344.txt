@@ -1,0 +1,18 @@
+Reverse String-344
+------------------------
+class Solution {
+    public void reverseString(char[] s) {
+        int n=s.length;
+        res(s,0,n-1);
+    }
+        public static void res(char[] s,int i,int n)
+        {
+            if(i>=n)
+                return;
+                    char temp=s[i];
+                    s[i]=s[n];
+                    s[n]=temp;
+                    res(s,i+1,n-1); 
+        }
+    
+}

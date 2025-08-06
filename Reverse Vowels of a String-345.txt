@@ -1,0 +1,38 @@
+Reverse Vowels of a String-
+345
+class Solution {
+    private boolean isVowel(char ch)
+    {
+        return "aeiouAEIOU".indexOf(ch)!=-1;
+    }
+    public String reverseVowels(String s) {
+        char[] arr=s.toCharArray();
+       Helper(arr,0,arr.length-1);
+        return new String(arr);
+        
+    }
+
+       private void Helper(char[] arr,int left,int right)
+       {
+        if(left>=right){
+          return;
+        }
+        if(!isVowel(arr[left]))
+        {
+            Helper(arr,left+1,right);
+        }
+        else if(!isVowel(arr[right]))
+        {
+            Helper(arr,left,right-1);
+            
+        }
+        else{
+            char temp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=temp;
+            Helper(arr, left+1,right-1);
+        }
+    }
+}
+           
+    
